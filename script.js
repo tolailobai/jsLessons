@@ -322,7 +322,7 @@ function detectLevel() {
 function checkSavings() {
     if (appData.savings == true) {
         let save = +prompt('Какова сумма накоплений?'),
-            percent = +prompt('Под какой процент&');
+            percent = +prompt('Под какой процент?');
 
         appData.monthIncome = +save/100/12*percent;
         alert("Доход в месяц с Вашего депозита: " + appData.monthIncome);
@@ -332,21 +332,38 @@ function checkSavings() {
 checkSavings();
 
 //Создать функцию для определения необязательных расходов (chooseOptExpenses)
-function optionalExpenses() {
+function chooseOptionalExpenses() {
     for (let i = 0; i < 3; i++) {
-        let a = prompt("Статья необязательных расходов?", ''),
-            b = prompt("Сумма?", '');
-        // а далее внесем код, который не пропустит пустые поля при заполнении пользователем
-        if ((typeof(a)) === 'string' // ответ должен быть строкой
-            && (typeof(a)) != null // ответ не должен быть null
-            && (typeof(b)) != null // ответ не должен быть null
-            && a != '' // ответ не должен быть пустым
-            && b != '' // ответ не должен быть пустым
-            && a.length < 50 ) // в ответе не более 50 символов
-        {
-            console.log('done');
-            appData.optionalExpenses[a] = b;
-        } else {i--};
+        let questionOptExpenses = prompt("Статья необязательных расходов?", '');
+        appData.optionalExpenses[i] = questionOptExpenses;
+        console.log(appData.optionalExpenses);
     };
 };
-optionalExpenses();
+chooseOptionalExpenses();
+
+console.log('Урок 2.13 - Callback функции');
+
+function first() {
+    setTimeout(
+        function() {
+            console.log('Я учу ')
+        }, 500
+    )
+}
+function second() {
+    console.log('JS');
+}
+first(); second();
+
+function learnJS(lang, callback) {
+    console.log('Я учу ' + lang);
+    callback();
+}
+// learnJS('JavaScript', function() {
+//     console.log("Прошёл урок 2.13")
+// })
+// или
+function done() {
+    console.log("Прошёл урок 2.13")
+};
+learnJS('JavaScript', done);
