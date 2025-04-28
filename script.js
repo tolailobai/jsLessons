@@ -342,28 +342,47 @@ function chooseOptionalExpenses() {
 chooseOptionalExpenses();
 
 console.log('Урок 2.13 - Callback функции');
+// function first() {
+//     setTimeout(
+//         function() {
+//             console.log('Я учу ')
+//         }, 500
+//     )
+// }
+// function second() {
+//     console.log('JS');
+// }
+// first(); second();
 
-function first() {
-    setTimeout(
-        function() {
-            console.log('Я учу ')
-        }, 500
-    )
-}
-function second() {
-    console.log('JS');
-}
-first(); second();
-
-function learnJS(lang, callback) {
-    console.log('Я учу ' + lang);
-    callback();
-}
-// learnJS('JavaScript', function() {
+// function learnJS(lang, callback) {
+//     console.log('Я учу ' + lang);
+//     callback();
+// }
+// // learnJS('JavaScript', function() {
+// //     console.log("Прошёл урок 2.13")
+// // })
+// // или
+// function done() {
 //     console.log("Прошёл урок 2.13")
-// })
-// или
-function done() {
-    console.log("Прошёл урок 2.13")
+// };
+// learnJS('JavaScript', done);
+
+console.log('Урок 2.14 - Объекты');
+let options = {
+    width: 1024,
+    height: 800,
+    name: 'test'
 };
-learnJS('JavaScript', done);
+console.log(options.name);
+options.bool = false; // создаем новую пару КЛЮЧ:ЗНАЧЕНИЕ
+options.colors = {
+    border: "black",
+    bg: "red"
+};
+delete options.bool;
+console.log(options);
+// цикл FOR IN . Походу планируем перебирать в объекте каждое свойство или метод с помощью key
+for (let key in options) {
+    console.log('Свойство ' + key + ' имеет значение ' + options[key]);
+};
+console.log(Object.keys(options).length);
