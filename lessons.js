@@ -423,39 +423,92 @@ console.log('Урок 2.15 - Массивы и псевдомассивы');
 //     console.log(key);
 // }
 console.log('Метод SPLIT для массивов');
-let ans = prompt('',''),
-    array = [];
-array = ans.split(','); // полученный ответ пользователя разбиваем на элементы массива, при этом в данном случае разделитель - ","
-console.log(array);
+// let ans = prompt('',''),
+//     array = [];
+// array = ans.split(','); // полученный ответ пользователя разбиваем на элементы массива, при этом в данном случае разделитель - ","
+// console.log(array);
 
-//для отправки массива одной строкой на сервер 
-let array2 = ['away','jZz','pp','123'],
-    i = array2.join('; ');
-    console.log(i); // получим одну строку, где все значения объединятся через указанный разделитель
+// //для отправки массива одной строкой на сервер 
+// let array2 = ['away','jZz','pp','123'],
+//     i = array2.join('; ');
+//     console.log(i); // получим одну строку, где все значения объединятся через указанный разделитель
 
-// для СОРТИРОВКИ массива, например по алфавиту, используется метод SORT - сортирует все как строки
+// // для СОРТИРОВКИ массива, например по алфавиту, используется метод SORT - сортирует все как строки
 
-let isa = array2.sort();
-console.log(isa);
-let arrNum = [4,55,2,7,5,9,3,1,]; console.log(arrNum);
-console.log(arrNum.sort());
-// для того чтобы SORT адекватно работал с цифрами, нужно использовать CALLBACK-function
-function compareNum(a,b) {
-    return a-b;
-};
-console.log(arrNum.sort(compareNum));
+// let isa = array2.sort();
+// console.log(isa);
+// let arrNum = [4,55,2,7,5,9,3,1,]; console.log(arrNum);
+// console.log(arrNum.sort());
+// // для того чтобы SORT адекватно работал с цифрами, нужно использовать CALLBACK-function
+// function compareNum(a,b) {
+//     return a-b;
+// };
+// console.log(arrNum.sort(compareNum));
 
-console.log('Функция-конструктор');
-function User(name,age) {
-    this.name = name;
-    this.age = age;
-    this.isAdmin = false;
-}
+// console.log('Функция-конструктор');
+// function User(name,age) {
+//     this.name = name;
+//     this.age = age;
+//     this.isAdmin = false;
+// }
   
-let user = new User("Tolai",39);
+// let user = new User("Tolai",39);
 
-console.log('Пользователь с именем ' + user.name + ' имеет возраст ' + user.age + ' лет и статус админа: ' + user.isAdmin); // Tolai
-console.log(user.name); // Tolai
-console.log(user.age); //39
-console.log(user.isAdmin); // false
+// console.log('Пользователь с именем ' + user.name + ' имеет возраст ' + user.age + ' лет и статус админа: ' + user.isAdmin); // Tolai
+// console.log(user.name); // Tolai
+// console.log(user.age); //39
+// console.log(user.isAdmin); // false
 
+console.log('Урок 2.18 - испекция кода (отладка)');
+function hello() {
+    console.log('Привет');
+}
+hello();
+
+function hi() {
+    console.log('Здорова');
+}
+hi();
+
+let arrray = [1, 15, 4, 30, 42, 100],
+    iArr = arrray.sort(compareNum2);
+
+function compareNum2(a,b) {
+    return a-b;
+}
+console.log(arrray);
+
+console.log('Урок 2.19 - Динамическая типизация в JS');
+let a;
+console.log(a); // получим undefined , null - это когда переменная не была даже объявлена
+console.log('TO STRING');
+console.log(typeof(String(4)));
+console.log(typeof(4 + '5'));
+console.log('red' + false);
+console.log('TO NUMBER');
+console.log(typeof(Number(4)));
+console.log(typeof(+'5'));
+console.log(5 + +'5');
+console.log(typeof(parseInt('15px', 10)));
+console.log(typeof('blue' / 10)); console.log('blue' / 10);
+console.log('TO BOOLEAN');
+console.log(typeof(Boolean('red')));
+console.log(typeof(!!'5'));
+let x = 5;
+console.log(++x);
+console.log([] + false - null + true);
+let y = 1;
+let x = y = 2;
+console.log(y);
+console.log([] + 1 + 2);
+console.log('1'[0]);
+console.log(2 && 1 && 5 && 3);
+let a = '2'; let b = '';
+console.log(!!( a && b ));
+console.log( a && b );
+console.log(null || 4 && 3 || null );
+a = [1, 2, 3]; b = [1, 2, 3];
+console.log(a == b);
+console.log(+"Infinity");
+console.log('е'>'Ж');
+console.log(0 || "" || 2 || undefined || true || falsе);
