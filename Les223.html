@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="les223.css">
+</head>
+<body>
+    <div class="box" id="box"></div>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+
+    <div class="circle">1</div>
+    <div class="circle">2</div>
+    <div class="circle">3</div>
+
+    <div class="wrapper">
+        <div class="heart">T</div>
+        <div class="heart">Ж</div>
+        <div class="heart">Л и А</div>
+    </div>
+
+    <div class="wrapper">
+        <div class="les">
+        <h3>1. Дано число. Проверьте, отрицательное оно или нет.</h3>
+        
+        <input type="text" class="input1" value='-10'>
+        <div class="box1" style="width: 50px; height: 24px; background-color: #aaaaaa;"></div>
+        <div class="box2"></div>
+    </div>
+
+    </div>
+
+    <script>
+        let box = document.getElementById('box'),
+            btn = document.getElementsByTagName('button'),
+            circle = document.getElementsByClassName('circle'),
+            heart = document.querySelectorAll('.heart'),
+            firstHeart = document.querySelector('.heart'),
+            wrapper = document.querySelector('.wrapper');
+
+        box.style.backgroundColor = 'yellow';
+        btn[1].style.borderRadius = '100%';
+        circle[0].style.backgroundColor = 'red';
+        circle[1].style.backgroundColor = 'yellow';
+        circle[2].style.backgroundColor = 'green';
+
+        // for (let i = 0; i < heart.length; i++) {
+        // heart[i].style.backgroundColor = 'blue';
+        // }
+        heart.forEach(function(item, i, hearts) {
+            item.style.backgroundColor = 'cyan';
+        });
+        let div = document.createElement('div'),
+            text = document.createTextNode('Тут был Толя');
+        div.classList.add('black');
+        // document.body.appendChild(div);
+        // wrapper.appendChild(div);
+        div.innerHTML = '<h1>Hello Man</h1>';
+        box.textContent = 'All you need is Love';
+
+        document.body.insertBefore(div,circle[1]);
+        document.body.removeChild(circle[2]);
+        wrapper.removeChild(heart[1]);
+        document.body.replaceChild(btn[2], circle[1]);
+
+        let box2 = document.querySelector(".box2");
+        console.log(box2);
+        box2.style.backgroundColor = 'green';
+
+        input1 = 0;
+        console.log(input1);
+
+        if (input1 < 0) {
+            box2.style.backgroundColor = 'blue';
+        } else if (input1 = 0) {
+            box2.style.backgroundColor = 'grey';
+        } else {
+            box2.style.backgroundColor = 'orange' 
+        }
+
+        let box1 = document.getElementsByClassName('box1');
+        console.log(box1);
+        box1.style.backgroundColor = 'green';
+
+    </script>
+</body>
+</html>
