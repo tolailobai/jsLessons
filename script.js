@@ -108,3 +108,66 @@ rub.addEventListener('input', () =>{
         }
     });
 });
+
+let formElement = document.getElementById('regForm');
+
+formElement.addEventListener('submit', function(event) {
+    event.preventDefault();
+    // НИЖНИЙ БЛОК КОДА - БЕЗ ИСПОЛЬЗОВАНИЯ FORMDATA. formData здесь лишь как переменная
+    let formData1 = {};
+    for (const element of formElement.elements) {        
+        // чтоб в formData не попали служебные поля с пустыми ключ:значение ("":"")
+        // если у элемента нет атрибута name, то он пропусается
+        if (!element.name) {
+            continue
+        };
+        // не корректно работает checkbox - изначально отправляет первый пункт (хотя ничего не выбрано)
+        if (element.type === 'checkbox') {
+            formData1[element.name] = element.checked;
+            continue // прерываем итерацию
+        } // то есть в значении используем не Value, а checked
+
+        // проблема с radio (gender). Так как два элемента Radio, то он берет значение последнего (Женский). Исправляем:
+        if (element.type === 'radio' && !element.checked) {
+            continue
+        }
+
+        formData1[element.name] = element.value
+
+
+// А ТЕПЕРЬ ИСПОЛЬЗУЯ ОБЪЕКТ FormData
+        const formData = new FormData(formElement);
+
+        console.log('formData:', formData); // так не сработает, так как FormData не обычный объект. Он имеет map структуру
+        console.log(Object.fromEntries(formData)); // а этот вариант сработает
+    };
+    console.log('formData1:', formData1);
+})
+
+let loadFormElement = document.querySelector('.load-todo-form'),
+    resultElement = document.querySelector('.result');
+
+loadFormElement.addEventListener('submit' , function(event) {
+    event.preventDefault();
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then((response) => {
+        console.log('response:', response)
+
+        return response.json()
+    })
+      .then((json) => {
+        console.log(json)
+
+        const {id, title, completed} = json
+
+        resultElement.innerHTML = `
+            <input
+                id='todo-${id}'
+                type='checkbox'
+                ${completed ? 'checked' : ''}
+            />
+            <label for="todo-${id}'>${title}</label>
+        `
+    });
+    // result.textContent = json;
+})

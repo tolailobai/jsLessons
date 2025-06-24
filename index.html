@@ -23,6 +23,59 @@
     <input class="box__money-rub rub" value="1000"></input>
     <p>USD</p>
     <input class="box__noney-usd usd"></input>
+    <div class="form__box">
+        <form id="regForm" action="" method="post">
+            <p class="field">
+                <label class="field__label" for="Login">Логин</label>
+                <input type="text" id="Login" name="Login" class="field__control">
+            </p>
+            <p class="field">
+                <label for="password" class="field__label">Пароль</label>
+                <input type="text" class="field__control" id="password" name="password" type="password">
+            </p>
+            <p class="field">
+                <label for="about" class="field__label">О себе</label>
+                <textarea class="field__control" name="about" id="about"></textarea>
+            </p>
+            <fieldset class="radios">
+                <legend class="radios__legend">Ваш пол</legend>
+
+                <input
+                type="radio"
+                class="radios__control"
+                name="gender"
+                id="male"
+                value="Мужской">
+                <label for="male" class="radios__label">Мужской</label>
+
+                <input
+                type="radio"
+                class="radios__control"
+                name="gender"
+                id="female"
+                value="Женский">
+                <label for="female" class="radios__label">Женский</label>
+
+            </fieldset>
+            <div class="field__checkbox">
+                <input
+                type="checkbox"
+                class="checkbox__control"
+                name="agreement"
+                id="agreement">
+                <label for="agreement" class="field__label checkbox__label ">Согласен на всё</label> 
+            </div>
+
+            <button type="submit">Регистрация</button>
+        </form>
+        <form action="submit" class="load-todo-form">
+            <h2>Поиск поста</h2>
+            <button type="submit">Загрузить информацию с сервера</button>
+        </form>
+        <div class="result"></div>
+
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

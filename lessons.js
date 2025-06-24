@@ -809,3 +809,104 @@ let monthOfYear = today.getMonth()
 console.log(monthOfYear);
 let newYear = today.setFullYear(2025,6,1);
 console.log(newYear);
+
+console.log('Урок 4.4 - Promis');
+btn.addEventListener('click', function() {
+    console.log('КлиК!')
+})
+
+// в кафе. Заказываем кофе...
+function orderCoffee() {
+  console.log("Заказ принят! Ваш кофе готовится...");
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (Math.random() < 0.8) {
+        resolve("Ваш заказ готов!");
+      } else {
+        reject("Извините, у нас сломалась кофемашина");
+      }
+    // Имитация задержки в 2 секунды
+    }, 2000); 
+  });
+}
+// но код выше не выдает результатов. Для этого нужны .then и .catch
+orderCoffee()
+  .then((result) => {
+    console.log(result); 
+  })
+  .catch((error) => {
+    console.error(error); 
+  })
+  .finally(() => {
+    console.log("Актуальные акции ищите в нашем приложении!");
+  });
+
+
+// создаем такую приколюху
+let drink = 1;
+function shoot(arrow, headshot, fail) {
+    console.log('Вы сделали выстрел...');
+
+    setTimeout(function() {
+        Math.random() > .5 ? headshot({}) : fail("Вы промахнулись!");
+    }, 3000)
+};
+shoot({},
+    function(mark) {
+        console.log('Вы попали в цель!');
+        win(mark, buyBeer, giveMoney);
+    }, function(miss) {
+        console.error(miss);
+        loose();
+});
+// теперь дополним код двумя следствиями
+function win() {
+    console.log('Вы победили!');
+    (drink == 1) ? buyBeer() : giveMoney();
+};
+function loose() {
+    console.log('Вы проиграли!')
+};
+function buyBeer() {
+    console.log('Вам купили пиво');
+};
+function giveMoney() {
+    console.log('Вам дали башли');
+};
+
+// Запишем всю эту программку с помощью Promise
+let drink = 1;
+function shoot(arrow) {
+    console.log('Вы сделали выстрел...');
+    let promise = new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            Math.random() > .5 ? resolve({}) : reject("Вы промахнулись!");
+        }, 3000)
+    });
+
+    return promise;
+};
+
+shoot({})
+    .then(mark => console.log('Вы попали в цель!'))
+    .then(win)
+    .catch(loose);
+
+let myPromise2 = new Promise(function(resOlve, rejEct) {
+    console.log('Начали...');
+    setTimeout(function() {
+        Math.random() > .5 ? resOlve('Ура') : rejEct('Sorry');
+    },2000);
+
+    
+
+})
+
+let promise = new Promise(function(resolve, reject) {resolve(1);setTimeout(() => resolve(2), 1000);});promise.then(console.log('ewqrf'));
+
+'use strict'
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve,ms));
+}
+
+delay(3000).then(() => console.log('выполнилось через 3 секунды'));
